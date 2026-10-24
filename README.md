@@ -12,13 +12,13 @@ A full-stack web application for managing authors and books, built using Flask a
 
 - **Backend:** Python (Flask, PyMySQL)
 - **Database:** MySQL
-- **Frontend:** HTML, CSS
+- **Frontend:** HTML
 
 ## Database Setup
 
 1. Open MySQL Workbench or your MySQL client.
-2. Run the DDL scripts (`problem1_DDL.sql` and `problem2_DDL.sql`) to initialize the database structure.
-3. Run the DML scripts (`problem1_DML.sql` and `problem2_DML.sql`) to insert the seed data.
+2. Run the DDL script (`problem2_DDL.sql`) to initialize the database structure.
+3. Run the DML script (`problem2_DML.sql`) to insert the application seed data.
 
 ## How to Run Locally
 
