@@ -1,0 +1,12 @@
+Q1.1:
+SQL: DELETE FROM Employee WHERE ssn = 102;
+Output: Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails (`company`.`department`, CONSTRAINT `fk_dept_mgr` FOREIGN KEY (`mgr_ssn`) REFERENCES `employee` (`ssn`))
+Reason: MySQL prevents deleting an employee who is currently managing a department because of referential integrity constraints.
+
+Q1.2:
+SQL: INSERT INTO Project (Pnumber, Pname, Plocation, Dno) VALUES (40, 'Delta', 'Tanta', 99);
+Output: Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails (`company`.`project`, CONSTRAINT `project_ibfk_1` FOREIGN KEY (`Dno`) REFERENCES `department` (`Dnumber`))
+Reason: The department number 99 does not exist in the referenced Department table.
+
+Q1.3:
+Answer: To insert the first row when both foreign keys are NOT NULL and depend on each other, you can either temporarily disable foreign key checks using "SET FOREIGN_KEY_CHECKS = 0;", insert a provisional record in one table, insert the second record, then update the first record and re-enable checks.
