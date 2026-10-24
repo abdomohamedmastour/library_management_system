@@ -1,16 +1,33 @@
 # Personal Library System
 
-A web-based Library Management System built with Python (Flask) and MySQL to manage books and authors with multi-user support.
+A full-stack web application for managing authors and books, built using Flask and MySQL.
 
-## Features
-- User authentication (Sign up / Login).
-- Manage Authors (Add, Edit, Delete, View).
-- Manage Books (Add, Edit, Delete, View by Author).
-- Multi-user data isolation.
+## Project Features
 
-## Deliverables & Project Structure
-- `app.py`: Main Flask backend application.
-- `templates/`: HTML frontend templates.
-- `problem1_DDL.sql` & `problem1_DML.sql`: Database schema and seed data for Problem 1.
-- `problem2_DDL.sql` & `problem2_DML.sql`: Database schema and seed data for Problem 2.
-- `problem1_Answers.txt`: Answers and documentation for Problem 1.
+- **User Authentication:** Secure user registration and login functionality.
+- **Author & Book Management:** Create, view, update, and delete authors and books (CRUD operations).
+- **Data Security:** Multi-user schema design ensuring proper data isolation between accounts.
+
+## Tech Stack
+
+- **Backend:** Python (Flask, PyMySQL)
+- **Database:** MySQL
+- **Frontend:** HTML, CSS
+
+## Database Setup
+
+1. Open MySQL Workbench or your MySQL client.
+2. Run the DDL scripts (`problem1_DDL.sql` and `problem2_DDL.sql`) to initialize the database structure.
+3. Run the DML scripts (`problem1_DML.sql` and `problem2_DML.sql`) to insert the seed data.
+
+## How to Run Locally
+
+1. Clone the repository: `git clone https://github.com/abdomohamedmastour/library_management_system.git`
+2. Install dependencies: `pip install flask pymysql`
+3. Start the application: `python app.py`
+4. Access the app in your browser at `http://127.0.0.1:5000`.
+
+## Project Team
+
+- Abdelrahman Mastour
+- Mohamed Ibrahim
