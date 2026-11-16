@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>F2.3 Reports & Statistics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light p-4">
+    <div class="container">
+        <h2 class="mb-4 text-success">F2.3 Reports </h2>
+        <a href="{{ url_for('index') }}" class="btn btn-outline-dark mb-3">← Back to Dashboard</a>
+
+        <!-- Library Price Stats (c) -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card text-bg-primary p-3 shadow-sm">
+                    <h5>Total Library Price</h5>
+                    <h3>${{ library_price_stats.total_price or 0 }}</h3>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-bg-success p-3 shadow-sm">
+                    <h5>Cheapest Book Price</h5>
+                    <h3>${{ library_price_stats.min_price or 0 }}</h3>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-bg-danger p-3 shadow-sm">
+                    <h5>Most Expensive Book</h5>
+                    <h3>${{ library_price_stats.max_price or 0 }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category Stats (a) -->
+        <h4 class="text-secondary mb-3">(a) Books Count and Average Price per Category</h4>
+        <table class="table table-striped table-bordered bg-white shadow-sm mb-5">
+            <thead class="table-dark">
+                <tr>
+                    <th>Category Name</th>
+                    <th>Total Books</th>
+                    <th>Average Price ($)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stat in category_stats %}
+                <tr>
+                    <td>{{ stat.category_name }}</td>
+                    <td>{{ stat.book_count }}</td>
+                    <td>{{ "%.2f"|format(stat.avg_price or 0) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Prolific Authors (b) -->
+        <h4 class="text-secondary mb-3">(b) Authors who wrote at least 2 books (HAVING)</h4>
+        <table class="table table-striped table-bordered bg-white shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>Author Name</th>
+                    <th>Total Books</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for auth in prolific_authors %}
+                <tr>
+                    <td>{{ auth.author_name }}</td>
+                    <td>{{ auth.total_books }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="2" class="text-center text-muted">No authors with 2+ books found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

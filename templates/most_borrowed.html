@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>F2.5 Most Borrowed Books</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light p-4">
+    <div class="container">
+        <h2 class="mb-4 text-dark">F2.5 Most Borrowed Books </h2>
+        <a href="{{ url_for('index') }}" class="btn btn-outline-dark mb-3">← Back to Dashboard</a>
+
+        <!-- Top Member -->
+        {% if top_member %}
+        <div class="alert alert-info shadow-sm mb-4">
+            <h5 class="alert-heading">🏆 Top Borrowing Member</h5>
+            <p class="mb-0"><strong>{{ top_member.member_name }}</strong> ({{ top_member.email }}) with <strong>{{ top_member.total_loans }}</strong> total loans.</p>
+        </div>
+        {% endif %}
+
+        <!-- Top 3 Books -->
+        <h4 class="text-secondary mb-3">Top 3 Most Borrowed Books</h4>
+        <table class="table table-striped table-bordered bg-white shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>Book Title</th>
+                    <th>Author</th>
+                    <th>Borrow Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in top_books %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author_name }}</td>
+                    <td><span class="badge bg-warning text-dark fs-6">{{ book.borrow_count }} times</span></td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="3" class="text-center text-muted">No loan records available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
